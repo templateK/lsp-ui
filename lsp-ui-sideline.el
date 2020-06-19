@@ -50,6 +50,11 @@
   :type 'boolean
   :group 'lsp-ui)
 
+(defcustom lsp-ui-sideline-overlay-shift 2
+  "How longer move lsp-ui-sideline overlay position to the left."
+  :type 'number
+  :group 'lsp-ui)
+
 (defcustom lsp-ui-sideline-ignore-duplicate nil
   "Ignore duplicates when there is a same symbol with the same contents."
   :type 'boolean
@@ -302,7 +307,8 @@ is set to t."
                  (lsp-ui-sideline--check-duplicate symbol info))
         (let* ((final-string (lsp-ui-sideline--make-display-string info symbol current))
                (pos-ov (lsp-ui-sideline--find-line (length final-string) bol eol))
-               (ov (when pos-ov (make-overlay (car pos-ov) (car pos-ov)))))
+               (ov (when pos-ov (make-overlay (- (car pos-ov) lsp-ui-sideline-overlay-shift)
+                                              (- (car pos-ov) lsp-ui-sideline-overlay-shift)))))
           (when pos-ov
             (overlay-put ov 'info info)
             (overlay-put ov 'symbol symbol)
