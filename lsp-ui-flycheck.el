@@ -95,7 +95,7 @@ Use `lsp-diagnostics' to receive diagnostics from your LSP server."
 (defun lsp-ui-flycheck-list ()
   "List all the diagnostics in the whole workspace."
   (interactive)
-  (let ((buffer (get-buffer-create "*lsp-diagnostics*"))
+  (let ((buffer (get-buffer-create " *lsp-diagnostics*"))
         (workspace lsp--cur-workspace)
         (window (selected-window)))
     (with-current-buffer buffer

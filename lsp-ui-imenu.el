@@ -243,7 +243,7 @@ Return the updated COLOR-INDEX."
 (defun lsp-ui-imenu--clear-bit (bits offset)
   (logand bits (lognot (lsh 1 offset))))
 
-(defvar lsp-ui-imenu-buffer-name "*lsp-ui-imenu*"
+(defvar lsp-ui-imenu-buffer-name " *lsp-ui-imenu*"
   "Buffer name for imenu buffers.")
 
 (defun lsp-ui-imenu nil
