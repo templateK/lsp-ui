@@ -153,6 +153,12 @@ Use `lsp-diagnostics' to receive diagnostics from your LSP server."
   (interactive)
   (kill-buffer))
 
+(defun lsp-ui-flycheck-list-close()
+  (interactive)
+  (-if-let* ((buffer (get-buffer " *lsp-diagnostics*"))
+              (window (get-buffer-window buffer)))
+      (quit-window nil window)))
+
 (defvar lsp-ui-flycheck-list-mode-map nil
   "Keymap for ‘lsp-ui-flycheck-list-mode’.")
 (unless lsp-ui-flycheck-list-mode-map

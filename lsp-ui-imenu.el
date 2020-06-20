@@ -323,6 +323,12 @@ Return the updated COLOR-INDEX."
       (recenter)
       (pulse-momentary-highlight-one-line (point) 'next-error))))
 
+(defun lsp-ui-imenu-close()
+  (interactive)
+  (-if-let* ((buffer (get-buffer " *lsp-ui-imenu*"))
+              (window (get-buffer-window buffer)))
+      (quit-window nil window)))
+
 (defvar lsp-ui-imenu-mode-map nil
   "Keymap for ‘lsp-ui-peek-mode’.")
 (unless lsp-ui-imenu-mode-map
